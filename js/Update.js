@@ -51,10 +51,12 @@ function update() {
                 bullet.scale.setTo(0.5);
                 switch(direction) {
                     case 'left' :
-                        bullet.reset(player.x - 50, player.y);         game.physics.arcade.moveToXY(bullet, -1000,         player.y, 300);
+                        bullet.reset(player.x - 50, player.y);
+                        game.physics.arcade.moveToXY(bullet, -1000, player.y, 300);
                         break;
                     case 'right':
-                        bullet.reset(player.x + 50, player.y);   game.physics.arcade.moveToXY(bullet, 1000, player.y, 300);
+                        bullet.reset(player.x + 50, player.y);
+                        game.physics.arcade.moveToXY(bullet, 1000, player.y, 300);
                         break;
                     case 'up':
                         bullet.reset(player.x, player.y - 50);
