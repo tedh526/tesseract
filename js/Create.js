@@ -3,7 +3,7 @@ var walls;
 var cursors;
 var wasd;
 var bullets;
-var fireRate = 100;
+var fireRate = 150;
 var nextFire = 0;
 
 
@@ -28,8 +28,8 @@ function create() {
     player.scale.setTo(1);
     player.animations.add('left', [22, 23, 24, 25, 26, 27, 28], 10, true);
     player.animations.add('right', [33, 34, 35, 36, 37, 38, 39], 10, true);
-    player.animations.add('down', [0, 1, 2, 3, 4, 5, 6], true);
-    player.animations.add('up', [11, 12, 13, 14, 15, 16, 17], true);
+    player.animations.add('down', [0, 1, 2, 3, 4, 5, 6], 10, true);
+    player.animations.add('up', [11, 12, 13, 14, 15, 16, 17], 10, true);
     game.camera.follow(player);
     game.physics.arcade.enable(player);
     player.body.collideWorldBounds = true;
@@ -44,8 +44,6 @@ function create() {
     bullets.setAll('checkWorldBounds', true);
     bullets.setAll('outOfBoundsKill', true);
 
-
-
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
     wasd = {
@@ -54,5 +52,5 @@ function create() {
         left: game.input.keyboard.addKey(Phaser.Keyboard.A),
         right: game.input.keyboard.addKey(Phaser.Keyboard.D),
     };
-    
+
 }

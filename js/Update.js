@@ -44,31 +44,77 @@ function update() {
         player.frame = 0;
     }
 
-    function fire() {
+    function fire(direction) {
         if (game.time.now > nextFire && bullets.countDead() > 0) {
-            nextFire = game.time.now + fireRate;
-            var bullet = bullets.getFirstDead();
-            bullet.reset(player.x - 8, player.y - 8);
-
-            game.physics.arcade.moveToPointer(bullet, 300);
+                nextFire = game.time.now + fireRate;
+                var bullet = bullets.getFirstDead();
+                bullet.scale.setTo(0.5);
+                switch(direction) {
+                    case 'left' :
+                        bullet.reset(player.x - 50, player.y);         game.physics.arcade.moveToXY(bullet, -1000,         player.y, 300);
+                        break;
+                    case 'right':
+                        bullet.reset(player.x + 50, player.y);   game.physics.arcade.moveToXY(bullet, 1000, player.y, 300);
+                        break;
+                    case 'up':
+                        bullet.reset(player.x, player.y - 50);
+                        game.physics.arcade.moveToXY(bullet, player.x, -1000, 300);
+                        break;
+                    case 'down':
+                        bullet.reset(player.x, player.y + 50);
+                        game.physics.arcade.moveToXY(bullet, player.x, 1000, 300);
+                        break;
+                    case 'up-left':
+                        bullet.reset(player.x - 50, player.y - 50);
+                        game.physics.arcade.moveToXY(bullet, player.x - 1000, player.y - 1000, 300);
+                        break;
+                    case 'up-right':
+                        bullet.reset(player.x + 50, player.y  - 50);
+                        game.physics.arcade.moveToXY(bullet, player.x + 1000, player.y - 1000, 300);
+                        break;
+                    case 'down-left':
+                        bullet.reset(player.x - 50, player.y + 50);
+                        game.physics.arcade.moveToXY(bullet, player.x - 1000, player.y + 1000, 300);
+                        break;
+                    case 'down-right':
+                        bullet.reset(player.x + 50, player.y + 50);
+                        game.physics.arcade.moveToXY(bullet, player.x + 1000, player.y + 1000, 300);
+                        break;
+                }
         }
     }
 
-
-    if (cursors.left.isDown)
+    if (cursors.up.isDown && cursors.left.isDown)
     {
-        fire();
+        fire('up-left');
+    }
+    else if (cursors.up.isDown && cursors.right.isDown)
+    {
+        fire('up-right');
+    }
+    else if (cursors.down.isDown && cursors.left.isDown)
+    {
+        fire('down-left');
+    }
+    else if (cursors.down.isDown && cursors.right.isDown)
+    {
+        fire('down-right');
+    }
+    else if (cursors.left.isDown)
+    {
+        fire('left');
     }
     else if (cursors.right.isDown)
     {
-        fire();
+        fire('right');
     }
     else if (cursors.up.isDown)
     {
-        fire();
+        fire('up');
     }
     else if (cursors.down.isDown)
     {
-        fire();
+        fire('down');
     }
+
 }
