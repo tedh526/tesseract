@@ -45,36 +45,52 @@ function update() {
     }
 
 
-function fire(direction) {
+    function fire(direction) {
+
         if (game.time.now > nextFire && bullets.countDead() > 0) {
                 nextFire = game.time.now + fireRate;
                 var bullet = bullets.getFirstDead();
                 bullet.scale.setTo(0.5);
-                bullet.reset(player.x, player.y);
+
                 switch(direction) {
-                    case 'left' : game.physics.arcade.moveToXY(bullet, -1000, player.y, 500); break;
-                    case 'right': game.physics.arcade.moveToXY(bullet, 1000, player.y, 500); break;
-                    case 'up': game.physics.arcade.moveToXY(bullet, player.x, -1000, 500); break;
-                    case 'down': game.physics.arcade.moveToXY(bullet, player.x, 1000, 500); break;
-                    case 'up-left': game.physics.arcade.moveToXY(bullet, player.x - 1000, player.y - 1000, 500); break;
-                    case 'up-right': game.physics.arcade.moveToXY(bullet, player.x + 1000, player.y - 1000, 500); break;
-                    case 'down-left': game.physics.arcade.moveToXY(bullet, player.x - 1000, player.y + 1000, 500); break;
-                    case 'down-right': game.physics.arcade.moveToXY(bullet, player.x + 1000, player.y + 1000, 500); break;
+                    case 'left' :
+                        bullet.reset(player.x - 50, player.y);
+                        game.physics.arcade.moveToXY(bullet, -1000, player.y, 500);
+                        break;
+                    case 'right':
+                        bullet.reset(player.x + 50, player.y);
+                        game.physics.arcade.moveToXY(bullet, 1000, player.y, 500);
+                        break;
+                    case 'up':
+                        bullet.reset(player.x, player.y - 50);
+                        game.physics.arcade.moveToXY(bullet, player.x, -1000, 500);
+                        break;
+                    case 'down':
+                        bullet.reset(player.x, player.y + 50);
+                        game.physics.arcade.moveToXY(bullet, player.x, 1000, 500);
+                        break;
+                    case 'up-left':
+                        bullet.reset(player.x - 50, player.y - 50);
+                        game.physics.arcade.moveToXY(bullet, player.x - 1000, player.y - 1000, 500);
+                        break;
+                    case 'up-right':
+                        bullet.reset(player.x + 50, player.y  - 50);
+                        game.physics.arcade.moveToXY(bullet, player.x + 1000, player.y - 1000, 500);
+                        break;
+                    case 'down-left':
+                        bullet.reset(player.x - 50, player.y + 50);
+                        game.physics.arcade.moveToXY(bullet, player.x - 1000, player.y + 1000, 500);
+                        break;
+                    case 'down-right':
+                        bullet.reset(player.x + 50, player.y + 50);
+                        game.physics.arcade.moveToXY(bullet, player.x + 1000, player.y + 1000, 500);
+                        break;
+
                 }
         }
 }
-    // function fire() {
-    //     if (game.time.now > nextFire && bullets.countDead() > 0) {
-    //         nextFire = game.time.now + fireRate;
-    //         var bullet = bullets.getFirstDead();
-    //         bullet.scale.setTo(0.5);
-    //         console.log('player', player.x, player.y)
-    //         bullet.reset(player.x - 8, player.y - 8);
 
-    //         game.physics.arcade.moveToPointer(bullet, 300);
-    //         console.log('bullet', bullet.x, bullet.y)
-    //     }
-    // }
+
 
     if (cursors.up.isDown && cursors.left.isDown)
     {
@@ -86,6 +102,7 @@ function fire(direction) {
     }
     else if (cursors.down.isDown && cursors.left.isDown)
     {
+
         fire('down-left');
     }
     else if (cursors.down.isDown && cursors.right.isDown)

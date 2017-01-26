@@ -43,8 +43,7 @@ function create() {
     bullets.setAll('anchor.y', 0.5);
     bullets.setAll('checkWorldBounds', true);
     bullets.setAll('outOfBoundsKill', true);
-
-
+  
     //  Our controls.
     cursors = game.input.keyboard.createCursorKeys();
     wasd = {
@@ -53,5 +52,5 @@ function create() {
         left: game.input.keyboard.addKey(Phaser.Keyboard.A),
         right: game.input.keyboard.addKey(Phaser.Keyboard.D),
     };
-    
+
 }
