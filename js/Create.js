@@ -3,7 +3,7 @@ var walls;
 var cursors;
 var wasd;
 var bullets;
-var fireRate = 150;
+var fireRate = 400;
 var nextFire = 0;
 
 

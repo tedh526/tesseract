@@ -52,35 +52,35 @@ function update() {
                 switch(direction) {
                     case 'left' :
                         bullet.reset(player.x - 50, player.y);
-                        game.physics.arcade.moveToXY(bullet, -1000, player.y, 300);
+                        game.physics.arcade.moveToXY(bullet, -1000, player.y, 500);
                         break;
                     case 'right':
                         bullet.reset(player.x + 50, player.y);
-                        game.physics.arcade.moveToXY(bullet, 1000, player.y, 300);
+                        game.physics.arcade.moveToXY(bullet, 1000, player.y, 500);
                         break;
                     case 'up':
                         bullet.reset(player.x, player.y - 50);
-                        game.physics.arcade.moveToXY(bullet, player.x, -1000, 300);
+                        game.physics.arcade.moveToXY(bullet, player.x, -1000, 500);
                         break;
                     case 'down':
                         bullet.reset(player.x, player.y + 50);
-                        game.physics.arcade.moveToXY(bullet, player.x, 1000, 300);
+                        game.physics.arcade.moveToXY(bullet, player.x, 1000, 500);
                         break;
                     case 'up-left':
                         bullet.reset(player.x - 50, player.y - 50);
-                        game.physics.arcade.moveToXY(bullet, player.x - 1000, player.y - 1000, 300);
+                        game.physics.arcade.moveToXY(bullet, player.x - 1000, player.y - 1000, 500);
                         break;
                     case 'up-right':
                         bullet.reset(player.x + 50, player.y  - 50);
-                        game.physics.arcade.moveToXY(bullet, player.x + 1000, player.y - 1000, 300);
+                        game.physics.arcade.moveToXY(bullet, player.x + 1000, player.y - 1000, 500);
                         break;
                     case 'down-left':
                         bullet.reset(player.x - 50, player.y + 50);
-                        game.physics.arcade.moveToXY(bullet, player.x - 1000, player.y + 1000, 300);
+                        game.physics.arcade.moveToXY(bullet, player.x - 1000, player.y + 1000, 500);
                         break;
                     case 'down-right':
                         bullet.reset(player.x + 50, player.y + 50);
-                        game.physics.arcade.moveToXY(bullet, player.x + 1000, player.y + 1000, 300);
+                        game.physics.arcade.moveToXY(bullet, player.x + 1000, player.y + 1000, 500);
                         break;
                 }
         }
