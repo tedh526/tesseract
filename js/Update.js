@@ -44,11 +44,14 @@ function update() {
         player.frame = 0;
     }
 
+
     function fire(direction) {
+
         if (game.time.now > nextFire && bullets.countDead() > 0) {
                 nextFire = game.time.now + fireRate;
                 var bullet = bullets.getFirstDead();
                 bullet.scale.setTo(0.5);
+
                 switch(direction) {
                     case 'left' :
                         bullet.reset(player.x - 50, player.y);
@@ -82,9 +85,12 @@ function update() {
                         bullet.reset(player.x + 50, player.y + 50);
                         game.physics.arcade.moveToXY(bullet, player.x + 1000, player.y + 1000, 500);
                         break;
+
                 }
         }
-    }
+}
+
+
 
     if (cursors.up.isDown && cursors.left.isDown)
     {
@@ -96,6 +102,7 @@ function update() {
     }
     else if (cursors.down.isDown && cursors.left.isDown)
     {
+
         fire('down-left');
     }
     else if (cursors.down.isDown && cursors.right.isDown)
